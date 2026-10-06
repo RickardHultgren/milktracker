@@ -1,0 +1,2 @@
+Upload the CONTENTS of this milk-tracker folder to the ROOT of a GitHub repository.
+The GitHub repository root must contain pubspec.yaml and the lib folder.
