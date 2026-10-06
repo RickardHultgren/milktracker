@@ -1,6 +1,6 @@
 # Milk Tracker
 
-A small offline Flutter app for tracking milk collected from Bengtsson's farm.
+A small offline Flutter app for tracking milk collected from a farm.
 
 ## Default bookkeeping rules
 
