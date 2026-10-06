@@ -1,2 +1,4 @@
-Upload the CONTENTS of this milk-tracker folder to the ROOT of a GitHub repository.
-The GitHub repository root must contain pubspec.yaml and the lib folder.
+Extract this ZIP.
+Open the milk-tracker folder.
+Upload ALL CONTENTS of that folder to the ROOT of your GitHub repository.
+Verify that GitHub shows android/, lib/, pubspec.yaml, and README.md at the top level.
