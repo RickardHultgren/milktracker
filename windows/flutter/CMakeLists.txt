@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.14)
+set(EPHEMERAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ephemeral")
+include(${EPHEMERAL_DIR}/generated_config.cmake)
+add_subdirectory(${EPHEMERAL_DIR})

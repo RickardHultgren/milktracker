@@ -1,64 +1,84 @@
 # Milk Tracker
 
-A small offline Flutter app for tracking milk collected from a farm.
+Offline Flutter Android app for tracking milk collections and payments.
 
-## Default bookkeeping rules
+## This repository is FlutLab/GitHub import ready
 
-- Milk price: **7.00 SEK/liter**
-- Can size: **3.0 liters**
-- Half can: **1.5 liters**
-- Payment threshold: **500 SEK**
-- Money is stored internally as integer **öre**
-- Milk quantity is stored internally as integer **milliliters**
-- Historical prices are preserved
-- Payments mark specific milk entries as cleared rather than deleting history
+The repository root contains:
 
-## Storage
+- `pubspec.yaml`
+- `lib/`
+- `test/`
+- `android/`
 
-The app works offline and stores a versioned JSON ledger locally using
-`shared_preferences`.
+The `android/` directory is included specifically because FlutLab's GitHub
+importer validates that an Android Flutter project contains it.
 
-The current unpaid balance is **derived from the saved transactions**. It is not
-saved as an independent authoritative counter.
+## Upload to GitHub
 
-## Import this repository into FlutLab
+Upload the CONTENTS of this folder to the ROOT of your GitHub repository.
 
-1. Create a GitHub repository, for example `milk-tracker`.
-2. Upload/push **the contents of this folder** to the repository root.
-   `pubspec.yaml` must be at the top level of the GitHub repository.
-3. Open FlutLab Workspace.
-4. Create/import a project from **GitHub** and select this repository.
-5. Run **Pub get** if FlutLab does not run it automatically.
-6. Run the Analyzer.
-7. Do a Web build for a quick UI check.
-8. Build Android and install the APK on the phone for the final persistence test.
+Correct:
 
-Do not add Firebase. The app does not require Firebase, a backend, authentication,
-or internet access while running.
+    your-repository/
+      pubspec.yaml
+      lib/
+      android/
+      test/
+      README.md
 
-## Repository root should look like this
+Incorrect:
 
-```text
-milk-tracker/
-├── pubspec.yaml
-├── lib/
-│   ├── main.dart
-│   ├── models/
-│   ├── screens/
-│   └── services/
-├── test/
-├── .gitignore
-└── README.md
-```
+    your-repository/
+      milk-tracker/
+        pubspec.yaml
+        lib/
+        android/
 
-## Android platform files
+`pubspec.yaml` and `android/` must be directly at the repository root.
 
-This repository intentionally does not include hand-written Android Gradle
-scaffolding. Flutter/FlutLab platform scaffolding is version-sensitive, and
-FlutLab imports Flutter codebases and builds them in its selected Flutter
-environment.
+## Import into FlutLab
 
-If FlutLab asks you to select/generate a codebase/platform configuration during
-import, choose a normal Flutter app with Android enabled.
+1. Push these files to GitHub.
+2. Open FlutLab Workspace.
+3. Choose import from GitHub.
+4. Select the repository URL.
+5. Base branch: `main`.
+6. Feature branch: `initial-setup` (or any unused branch name).
+7. Import.
+8. Run Pub Get / Analyzer if FlutLab asks.
+9. Build Android.
 
-For Google Play release details, see `FLUTLAB_ANDROID_BUILD.md`.
+## Android notes
+
+- Application ID: `se.rickard.milktracker`
+- Android Gradle Plugin: 8.7.3
+- Gradle distribution: 8.9
+- Java compatibility: 17
+- Main/release manifest does not request INTERNET permission.
+- Debug/profile manifests request INTERNET only for Flutter debugging/hot reload.
+- No Firebase.
+- No backend.
+- The installed release app works offline.
+
+The Gradle wrapper executable/JAR is intentionally not committed. Flutter tooling
+injects missing Gradle wrapper files when preparing an Android build, and
+`gradle-wrapper.properties` is included to pin the Gradle distribution.
+
+Before Google Play publication, replace debug signing with a private release/upload key.
+
+
+## Full standard platform layout
+
+This package additionally contains the standard Flutter platform directories:
+
+- `android/`
+- `ios/`
+- `web/`
+- `linux/`
+- `macos/`
+- `windows/`
+
+The app is intended to be built for Android in FlutLab. The additional platform
+scaffolds are included so FlutLab's GitHub importer recognizes the repository as
+a full Flutter application rather than rejecting it for a missing platform directory.
